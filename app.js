@@ -71,7 +71,7 @@ const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 
 io.use(function(socket, next) {
-  sessionOptions(socket.request, socket.request.res, next)
+  sessionOptions(socket.request, socket.request.res || {}, next)
 })
 
 io.on('connection', function(socket) {
